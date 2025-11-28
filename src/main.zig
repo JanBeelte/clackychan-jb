@@ -10,7 +10,7 @@ const rp2xxx = microzig.hal;
 const time = rp2xxx.time;
 const gpio = rp2xxx.gpio;
 
-const shared_keymap = @import("shared_keymap.zig");
+const keymap = @import("keymap.zig");
 
 // uart
 
@@ -39,14 +39,14 @@ pub const pin_config = rp2xxx.pins.GlobalConfiguration{
     .GPIO10 = .{ .name = "k10", .direction = .in },
 };
 pub const p = pin_config.pins();
-pub const pin_mappings_right = [shared_keymap.key_count]?[2]usize{
+pub const pin_mappings_right = [keymap.key_count]?[2]usize{
    null, null, null, null, null,  .{0,13},.{0,12},.{0,11},.{0,10},.{0,5},
    null, null, null, null, null,   .{0,9},.{0,8},.{0,7},.{0,6},.{0,0},
          null, null, null, null,   .{0,4},.{0,3},.{0,2},.{0,1},
                            null,   .{0, 14}
 };
 
-pub const pin_mappings_left = [shared_keymap.key_count]?[2]usize{
+pub const pin_mappings_left = [keymap.key_count]?[2]usize{
   .{0,5}, .{0,10},.{0,11},.{0,12},.{0,13},       null, null, null, null, null,
   .{0,0}, .{0,6}, .{0,7}, .{0,8}, .{0,9},       null, null, null, null, null,
           .{0,1}, .{0,2}, .{0,3}, .{0,4},      null, null, null, null,
@@ -71,15 +71,15 @@ pub fn main() !void {
     if (primary) {
         blink_led(1, 300);
         zigmkay.run_primary(
-            shared_keymap.dimensions,
+            keymap.dimensions,
             clacky_pin_cols[0..],
             clacky_pin_rows[0..],
             scanner_settings,
-            shared_keymap.combos[0..],
-            &shared_keymap.custom_functions,
+            keymap.combos[0..],
+            &keymap.custom_functions,
             pin_mappings_right,
-            &shared_keymap.keymap,
-            shared_keymap.sides,
+            &keymap.keymap,
+            keymap.sides,
             uart,
         ) catch {
             blink_led(100000, 50);
@@ -87,7 +87,7 @@ pub fn main() !void {
     } else {
         blink_led(5, 50);
         zigmkay.run_secondary(
-            shared_keymap.dimensions,
+            keymap.dimensions,
             clacky_pin_cols[0..],
             clacky_pin_rows[0..],
             scanner_settings,
