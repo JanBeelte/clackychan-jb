@@ -10,7 +10,7 @@ const dk = zmk.keycodes.dk;
 const core = zigmkay.core;
 const us = zmk.keycodes.us;
 
-const shared_keymap = @import("../shared_keymap.zig");
+const shared_keymap = @import("shared_keymap.zig");
 
 // uart
 

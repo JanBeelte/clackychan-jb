@@ -14,31 +14,21 @@ pub fn build(b: *std.Build) void {
     const optimize: std.builtin.OptimizeMode = .ReleaseSafe; //b.standardOptimizeOption(.{});
 
     const zigmkay_dep = b.dependency("zigmkay", .{});
+    const zigmkay_mod = zigmkay_dep.module("zigmkay");
 
     const firmware = mb.add_firmware(.{
-        .name = "zigmkay",
+        .name = "clackychan_jb",
         .target = &target,
         .optimize = optimize,
         .root_source_file = b.path("src/main.zig"),
-        .imports = &.{
-            .{ .name = "zigmkay", .module = zigmkay_dep.module("zigmkay") },
-        },
+        // .imports = &.{
+        //     .{ .name = "zigmkay", .module = zigmkay_mod },
+        // },
     });
+
+    firmware.add_app_import("zigmkay", zigmkay_mod, .{ .depend_on_microzig = true });
 
     // We call this twice to demonstrate that the default binary output for
     // RP2040 is UF2, but we can also output other formats easily
     mb.install_firmware(firmware, .{});
-
-    // const exe = b.addExecutable(.{
-    //     .name = "clackychan_jb",
-    //     .root_module = b.createModule(.{
-    //         .root_source_file = b.path("src/main.zig"),
-    //         .target = target,
-    //         .optimize = optimize,
-    //         .imports = &.{
-    //             .{ .name = "zigmkay", .module = zigmkay_dep },
-    //         },
-    //     }),
-    // });
-    // b.installArtifact(exe);
 }
