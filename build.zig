@@ -21,6 +21,7 @@ pub fn build(b: *std.Build) void {
         .target = &target,
         .optimize = optimize,
         .root_source_file = b.path("src/main.zig"),
+        // TOOD: Move back to normal imports once working
         // .imports = &.{
         //     .{ .name = "zigmkay", .module = zigmkay_mod },
         // },

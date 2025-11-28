@@ -1,14 +1,14 @@
 const std = @import("std");
 
-const microzig = @import("microzig");
-const rp2xxx = microzig.hal;
-const time = rp2xxx.time;
-const gpio = rp2xxx.gpio;
 const zmk = @import("zigmkay");
 const zigmkay = zmk.zigmkay;
 const dk = zmk.keycodes.dk;
 const core = zigmkay.core;
 const us = zmk.keycodes.us;
+const microzig = zmk.microzig;
+const rp2xxx = microzig.hal;
+const time = rp2xxx.time;
+const gpio = rp2xxx.gpio;
 
 const shared_keymap = @import("shared_keymap.zig");
 
