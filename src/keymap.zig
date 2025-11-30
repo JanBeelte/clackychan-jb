@@ -42,14 +42,14 @@ pub const keymap = [_][key_count]core.KeyDef{
     .{
    T(us.ESC),    T(us.LBRC),    CTL(us.RBRC),          T(us.LCBR), T(us.RCBR),             T(us.GRAVE),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.TAB),
     CTL(us.BACKSPACE), ALT(us.LPRN), GUI(us.RPRN),   SFT(us.LABK), T(us.RABK),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), T(us.PGDN),
-                  T(us.EXLM),   T(us.TILD),  T(us.BACKSLASH),    T(us.PIPE),                T(us.QUES),  CTL(us.SLASH), T(us.QUOT), T(us.DQUO),
+                  T(us.EXLM),   T(us.TILD),  T(us.SLASH),    T(us.BACKSLASH),                T(us.QUES),  CTL(us.PIPE), T(us.SEMICOLON), T(us.QUOT),
                                         LT(L_LEFT, us.SPACE),                _______
     },
     // L_NUM
     .{
        T(us.ESC),  T(us.AT),    T(us.HASH),  T(us.DLR), T(us.PERC),                  T(us.MINUS),   T(us.N7),  CTL(us.N8),  T(us.N9),    T(us.PLUS),
        CTL(us.AMPR),     UNDO,          REDO, T(us.ENTER), T(us.CART),                T(us.UNDERLINE), SFT(us.N4),GUI(us.N5),ALT(us.N6), CTL(us.EQUAL),
-               T(us.ASTER), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
+               T(_Gui(us.X)), T(_Gui(us.C)),   T(us.ASTER), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
     // L_EMPTY
@@ -62,10 +62,10 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // BOTH
     .{
-    T(_Gui(us.ESC)),   T(us.F7),   CTL(us.F8),   T(us.F9), T(us.F10),            T(us.PLUS), T(us.SPACE), CTL(us.SPACE), T(us.SPACE), T(us.TAB),
-    T(_Gui(us.GRAVE)), ALT(us.F4), GUI(us.F5), SFT(us.F6), T(us.F11),             T(de.SRPS),  SFT(us.BS),  GUI(us.BS),  ALT(us.BS),   CTL(us.ESC),
+    T(us.ESC),   T(us.F7),   CTL(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), CTL(us.SPACE), T(us.SPACE), T(_Gui(us.TAB)),
+    T(us.PLUS), ALT(us.F4), GUI(us.F5), SFT(us.F6), T(us.F11),             T(de.SRPS),  SFT(us.BS),  GUI(us.BS),  ALT(us.BS),   CTL(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
-                                                   _______,              T(us.N0)
+                                                   _______,              _______
     },
     .{
         WinNav(us.N7), _______, WinNav(us.N1), WinNav(us.N6), _______,             _______, _______, _______, _______, _______,
