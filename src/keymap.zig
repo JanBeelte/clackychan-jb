@@ -42,7 +42,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     .{
    T(us.ESC),    T(us.LBRC),    CTL(us.RBRC),          T(us.LCBR), T(us.RCBR),             T(us.GRAVE),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.TAB),
     CTL(us.BACKSPACE), ALT(us.LPRN), GUI(us.RPRN),   SFT(us.LABK), T(us.RABK),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), T(us.PGDN),
-                  T(us.EXLM),   T(us.TILD),  T(us.SLASH),    T(us.BACKSLASH),                T(us.QUES),  CTL(us.PIPE), T(us.SEMICOLON), T(us.QUOT),
+                  T(us.EXLM),   T(us.COLON),  T(us.SLASH),    T(us.BACKSLASH),                T(us.QUES),  CTL(us.PIPE), T(us.SEMICOLON), T(us.QUOT),
                                         LT(L_LEFT, us.SPACE),                _______
     },
     // L_NUM
