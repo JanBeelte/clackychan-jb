@@ -17,7 +17,7 @@ pub fn build(b: *std.Build) void {
     const zigmkay_mod = zigmkay_dep.module("zigmkay");
 
     const firmware = mb.add_firmware(.{
-        .name = "clackychan_jb",
+        .name = "zigmkay",
         .target = &target,
         .optimize = optimize,
         .root_source_file = b.path("src/main.zig"),
