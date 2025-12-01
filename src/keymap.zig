@@ -40,17 +40,17 @@ pub const keymap = [_][key_count]core.KeyDef{
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
-    // L_ARROWS - WIP (COLON up for debate)
+    // L_ARROWS - WIP (PLUS & MINUS up for debate)
     .{
-   T(us.LBRC),    T(us.RBRC),    T(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.GRAVE),  T(us.HOME),   AF(us.UP),    SFT(us.END),  T(us.TAB),
-    SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.COLON),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
-                  T(us.EXLM),   T(us.HASH),  T(us.SLASH),    T(us.BACKSLASH),                T(us.QUES),  GUI(us.PIPE), ALT(us.SEMICOLON), CTL(us.QUOT),
+   T(us.LBRC),    T(us.RBRC),    T(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    SFT(us.END),  T(us.PLUS),
+    SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
+                  T(us.EXLM),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM
     .{
-       T(us.ESC),  T(us.AMPR),    T(us.ASTER),  T(us.PERC), T(us.CART),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
-       SFT(us.BACKSPACE),     UNDO,          REDO, T(us.ENTER), T(us.DLR),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
+       T(us.ESC),  REDO,    SFT(us.PERC),  T(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
+       GUI(us.BACKSPACE),     UNDO,         T(_Gui(us.S)) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
                T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
