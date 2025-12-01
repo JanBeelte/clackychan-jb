@@ -35,21 +35,21 @@ pub const SCRNSHT = T(_GCS(us.N4));
 
 pub const keymap = [_][key_count]core.KeyDef{
     .{
-         GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), SFT(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
+         GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), T(us.F),   SFT(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
          SFT(us.A), CTL(us.R), ALT(us.S),         GUI(us.T), GuiH(us.G, us.T),                  T(us.M), GUI(us.N),   ALT(us.E),     CTL(us.I),    SFT(us.O),
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
     // L_ARROWS - WIP (PLUS & MINUS up for debate)
     .{
-   GUI(us.LBRC),    T(us.RBRC),    SFT(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
+   GUI(us.LBRC),    T(us.RBRC),    T(us.LCBR),          SFT(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
                   T(us.EXLM),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM
     .{
-       GUI(us.ESC),  REDO,    SFT(us.PERC),  T(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
+       GUI(us.ESC),  REDO,    T(us.PERC),  SFT(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
        AF(us.BACKSPACE),     UNDO,         T(_Gui(us.S)) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
                T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
@@ -64,7 +64,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // BOTH - WIP (ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
     .{
-    GUI(us.ESC),   T(us.F7),   SFT(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
+    GUI(us.ESC),   T(us.F7),   T(us.F8),   SFT(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
     SCRNSHT, CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
