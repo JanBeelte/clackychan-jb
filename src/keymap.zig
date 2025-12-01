@@ -38,17 +38,17 @@ pub const keymap = [_][key_count]core.KeyDef{
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
-    // L_ARROWS - WIP (ESC up for debate)
+    // L_ARROWS - WIP (COLON up for debate)
     .{
-   T(us.ESC),    T(us.LBRC),    CTL(us.RBRC),          T(us.LCBR), T(us.RCBR),             T(us.GRAVE),  T(us.HOME),   AF(us.UP),    SFT(us.END),  T(us.TAB),
-    SFT(us.AT), CTL(us.LPRN), ALT(us.RPRN),   GUI(us.LABK), T(us.RABK),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
+   T(us.LBRC),    T(us.RBRC),    T(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.GRAVE),  T(us.HOME),   AF(us.UP),    SFT(us.END),  T(us.TAB),
+    SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.COLON),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
                   T(us.EXLM),   T(us.HASH),  T(us.SLASH),    T(us.BACKSLASH),                T(us.QUES),  GUI(us.PIPE), ALT(us.SEMICOLON), CTL(us.QUOT),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM
     .{
-       T(us.ESC),  T(us.AMPR),    T(us.ASTER),  T(us.DLR), T(us.PERC),                  T(us.MINUS),   T(us.N7),  CTL(us.N8),  T(us.N9),    T(us.PLUS),
-       SFT(us.BACKSPACE),     UNDO,          REDO, T(us.ENTER), T(us.CART),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
+       T(us.ESC),  T(us.AMPR),    T(us.ASTER),  T(us.PERC), T(us.CART),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
+       SFT(us.BACKSPACE),     UNDO,          REDO, T(us.ENTER), T(us.DLR),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
                T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
@@ -60,9 +60,9 @@ pub const keymap = [_][key_count]core.KeyDef{
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
 
     },
-    // BOTH
+    // BOTH - WIP (ESC & PLUS & TAB & GRAVE & CART up for debate)
     .{
-    T(us.ESC),   T(us.F7),   CTL(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), CTL(us.SPACE), T(us.SPACE), T(us.TAB),
+    T(us.ESC),   T(us.F7),   T(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
     SFT(us.PLUS), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
@@ -73,7 +73,7 @@ pub const keymap = [_][key_count]core.KeyDef{
                     _______, WinNav(us.N3), WinNav(us.N8), _______,             _______, _______, _______, _______,
                                                             _______,             _______
     },
-        // GAMING
+    // GAMING
     .{
             NONE,    NONE,    NONE,    NONE,    NONE,                   NONE,       NONE,   T(us.UP),        NONE,    NONE,
             NONE, T(us.A), T(us.S), T(us.T),    NONE,                   NONE, T(us.LEFT), T(us.DOWN), T(us.RIGHT),    NONE,
@@ -250,7 +250,7 @@ fn GUI(keycode_fire: core.KeyCodeFire) core.KeyDef {
         .tap_hold = .{
             .tap = .{ .key_press = keycode_fire },
             .hold = core.HoldDef{ .hold_modifiers = .{ .left_gui = true } },
-            .tapping_term = .{ .ms = 750 },
+            .tapping_term = tapping_term,
         },
     };
 }
@@ -261,7 +261,7 @@ fn GuiH(keycode_fire: core.KeyCodeFire, keycode_hold: core.KeyCodeFire) core.Key
         .tap_hold = .{
             .tap = .{ .key_press = keycode_fire },
             .hold = core.HoldDef{ .hold_modifiers = .{ .left_gui = true }, .custom = keycode_hold.tap_keycode },
-            .tapping_term = .{ .ms = 250 },
+            .tapping_term = tapping_term,
         },
     };
 }
