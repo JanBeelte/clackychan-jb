@@ -35,14 +35,14 @@ pub const SCRNSHT = T(_GCS(us.N4));
 
 pub const keymap = [_][key_count]core.KeyDef{
     .{
-         GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), T(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
+         GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), SFT(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
          SFT(us.A), CTL(us.R), ALT(us.S),         GUI(us.T), GuiH(us.G, us.T),                  T(us.M), GUI(us.N),   ALT(us.E),     CTL(us.I),    SFT(us.O),
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
     // L_ARROWS - WIP (PLUS & MINUS up for debate)
     .{
-   T(us.LBRC),    T(us.RBRC),    T(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    SFT(us.END),  T(us.PLUS),
+   T(us.LBRC),    T(us.RBRC),    SFT(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
                   T(us.EXLM),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
                                         LT(L_LEFT, us.ENTER),                _______
@@ -62,9 +62,9 @@ pub const keymap = [_][key_count]core.KeyDef{
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
 
     },
-    // BOTH - WIP (ESC & TAB & GRAVE & CART up for debate)
+    // BOTH - WIP (ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
     .{
-    T(us.ESC),   T(us.F7),   T(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
+    T(us.ESC),   T(us.F7),   SFT(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
     SCRNSHT, CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
@@ -134,12 +134,12 @@ fn _Sft(fire: core.KeyCodeFire) core.KeyCodeFire {
 
 fn _GCS(fire: core.KeyCodeFire) core.KeyCodeFire {
     var copy = fire;
-    if (copy.tap_modifiers) |mods| { 
+    if (copy.tap_modifiers) |mods| {
         mods.left_gui = true;
         mods.left_ctrl = true;
-        mods.left_shift = true; 
+        mods.left_shift = true;
     } else {
-        copy.tap_modifiers = .{.left_gui = true,.left_ctrl = true,.left_shift = true };
+        copy.tap_modifiers = .{ .left_gui = true, .left_ctrl = true, .left_shift = true };
     }
     return copy;
 }
