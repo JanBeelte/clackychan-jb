@@ -31,6 +31,8 @@ pub const sides = [key_count]core.Side{
               .X,       .X
 };
 
+pub const SCRNSHT = T(_GCS(us.N4));
+
 pub const keymap = [_][key_count]core.KeyDef{
     .{
          GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), T(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
@@ -60,10 +62,10 @@ pub const keymap = [_][key_count]core.KeyDef{
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
 
     },
-    // BOTH - WIP (ESC & PLUS & TAB & GRAVE & CART up for debate)
+    // BOTH - WIP (ESC & TAB & GRAVE & CART up for debate)
     .{
     T(us.ESC),   T(us.F7),   T(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
-    SFT(us.PLUS), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
+    SCRNSHT, CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
     },
@@ -129,6 +131,19 @@ fn _Sft(fire: core.KeyCodeFire) core.KeyCodeFire {
     }
     return copy;
 }
+
+fn _GCS(fire: core.KeyCodeFire) core.KeyCodeFire {
+    var copy = fire;
+    if (copy.tap_modifiers) |mods| { 
+        mods.left_gui = true;
+        mods.left_ctrl = true;
+        mods.left_shift = true; 
+    } else {
+        copy.tap_modifiers = .{.left_gui = true,.left_ctrl = true,.left_shift = true };
+    }
+    return copy;
+}
+
 fn C(key_press: core.KeyCodeFire, custom_hold: u8) core.KeyDef {
     return core.KeyDef{
         .tap_hold = .{
@@ -255,7 +270,6 @@ fn GUI(keycode_fire: core.KeyCodeFire) core.KeyDef {
     };
 }
 
-
 fn GuiH(keycode_fire: core.KeyCodeFire, keycode_hold: core.KeyCodeFire) core.KeyDef {
     return core.KeyDef{
         .tap_hold = .{
@@ -301,10 +315,9 @@ fn on_event(event: core.ProcessorEvent, layers: *core.LayerActivations, output_q
     switch (event) {
         .OnHoldEnterAfter => |data| {
             layers.set_layer_state(L_BOTH, layers.is_layer_active(L_LEFT) and layers.is_layer_active(L_RIGHT));
-                    if (data.hold.custom) |kc| {
+            if (data.hold.custom) |kc| {
                 output_queue.tap_key(core.KeyCodeFire{ .tap_keycode = kc, .tap_modifiers = data.hold.hold_modifiers }) catch {};
             }
-        
         },
         .OnHoldExitAfter => |_| {
             layers.set_layer_state(L_BOTH, layers.is_layer_active(L_LEFT) and layers.is_layer_active(L_RIGHT));
