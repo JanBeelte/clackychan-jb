@@ -33,9 +33,9 @@ pub const sides = [key_count]core.Side{
 
 pub const keymap = [_][key_count]core.KeyDef{
     .{
-         GuiH(us.Q),  GuiH(us.W), T(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
-         SFT(us.A), CTL(us.R), ALT(us.S),         GUI(us.T), T(us.G),                  T(us.M), GUI(us.N),   ALT(us.E),     CTL(us.I),    SFT(us.O),
-                    GuiH(us.X),   GuiH(us.C),         T(us.D), GuiH(us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
+         GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), T(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
+         SFT(us.A), CTL(us.R), ALT(us.S),         GUI(us.T), GuiH(us.G, us.T),                  T(us.M), GUI(us.N),   ALT(us.E),     CTL(us.I),    SFT(us.O),
+                    GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
     // L_ARROWS - WIP (ESC up for debate)
@@ -254,12 +254,14 @@ fn GUI(keycode_fire: core.KeyCodeFire) core.KeyDef {
         },
     };
 }
-fn GuiH(keycode_fire: core.KeyCodeFire) core.KeyDef {
+
+
+fn GuiH(keycode_fire: core.KeyCodeFire, keycode_hold: core.KeyCodeFire) core.KeyDef {
     return core.KeyDef{
         .tap_hold = .{
             .tap = .{ .key_press = keycode_fire },
-            .hold = core.HoldDef{ .hold_modifiers = .{ .left_gui = true }, .custom = keycode_fire.tap_keycode },
-            .tapping_term = .{ .ms = 750 },
+            .hold = core.HoldDef{ .hold_modifiers = .{ .left_gui = true }, .custom = keycode_hold.tap_keycode },
+            .tapping_term = .{ .ms = 250 },
         },
     };
 }
