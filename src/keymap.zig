@@ -33,23 +33,23 @@ pub const sides = [key_count]core.Side{
 
 pub const keymap = [_][key_count]core.KeyDef{
     .{
-         T(us.Q),  AF(us.W), CTL(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  CTL(us.U),       T(us.Y), T(us.SEMICOLON),
-         CTL(us.A), ALT(us.R), GUI(us.S),         SFT(us.T), T(us.G),                  T(us.M), SFT(us.N),   GUI(us.E),     ALT(us.I),    CTL(us.O),
-                    T(us.X),   T(us.C),         T(us.D), T(us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
+         GuiH(us.Q),  GuiH(us.W), T(us.F),   T(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
+         SFT(us.A), CTL(us.R), ALT(us.S),         GUI(us.T), T(us.G),                  T(us.M), GUI(us.N),   ALT(us.E),     CTL(us.I),    SFT(us.O),
+                    GuiH(us.X),   GuiH(us.C),         T(us.D), GuiH(us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
-    // L_ARROWS
+    // L_ARROWS - WIP (ESC up for debate)
     .{
    T(us.ESC),    T(us.LBRC),    CTL(us.RBRC),          T(us.LCBR), T(us.RCBR),             T(us.GRAVE),  T(us.HOME),   AF(us.UP),    SFT(us.END),  T(us.TAB),
-    CTL(us.BACKSPACE), ALT(us.LPRN), GUI(us.RPRN),   SFT(us.LABK), T(us.RABK),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), T(us.PGDN),
-                  T(us.EXLM),   T(us.COLON),  T(us.SLASH),    T(us.BACKSLASH),                SFT(us.QUES),  GUI(us.PIPE), ALT(us.SEMICOLON), CTL(us.QUOT),
+    SFT(us.AT), CTL(us.LPRN), ALT(us.RPRN),   GUI(us.LABK), T(us.RABK),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
+                  T(us.EXLM),   T(us.HASH),  T(us.SLASH),    T(us.BACKSLASH),                T(us.QUES),  GUI(us.PIPE), ALT(us.SEMICOLON), CTL(us.QUOT),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM
     .{
-       T(us.ESC),  T(us.AT),    T(us.HASH),  T(us.DLR), T(us.PERC),                  T(us.MINUS),   T(us.N7),  CTL(us.N8),  T(us.N9),    T(us.PLUS),
-       CTL(us.AMPR),     UNDO,          REDO, T(us.ENTER), T(us.CART),                T(us.UNDERLINE), SFT(us.N4),GUI(us.N5),ALT(us.N6), CTL(us.EQUAL),
-               T(_Gui(us.X)), T(_Gui(us.C)),   T(us.ASTER), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
+       T(us.ESC),  T(us.AMPR),    T(us.ASTER),  T(us.DLR), T(us.PERC),                  T(us.MINUS),   T(us.N7),  CTL(us.N8),  T(us.N9),    T(us.PLUS),
+       SFT(us.BACKSPACE),     UNDO,          REDO, T(us.ENTER), T(us.CART),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
+               T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
     // L_EMPTY
@@ -63,7 +63,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     // BOTH
     .{
     T(us.ESC),   T(us.F7),   CTL(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), CTL(us.SPACE), T(us.SPACE), T(us.TAB),
-    T(us.PLUS), ALT(us.F4), GUI(us.F5), SFT(us.F6), T(us.F11),             T(de.SRPS),  SFT(us.BS),  GUI(us.BS),  ALT(us.BS),   CTL(us.ESC),
+    SFT(us.PLUS), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
     },
@@ -254,6 +254,15 @@ fn GUI(keycode_fire: core.KeyCodeFire) core.KeyDef {
         },
     };
 }
+fn GuiH(keycode_fire: core.KeyCodeFire) core.KeyDef {
+    return core.KeyDef{
+        .tap_hold = .{
+            .tap = .{ .key_press = keycode_fire },
+            .hold = core.HoldDef{ .hold_modifiers = .{ .left_gui = true }, .custom = keycode_fire.tap_keycode },
+            .tapping_term = .{ .ms = 750 },
+        },
+    };
+}
 fn CTL(keycode_fire: core.KeyCodeFire) core.KeyDef {
     return core.KeyDef{
         .tap_hold = .{
@@ -288,8 +297,12 @@ const EQ_COL = 3;
 
 fn on_event(event: core.ProcessorEvent, layers: *core.LayerActivations, output_queue: *core.OutputCommandQueue) void {
     switch (event) {
-        .OnHoldEnterAfter => |_| {
+        .OnHoldEnterAfter => |data| {
             layers.set_layer_state(L_BOTH, layers.is_layer_active(L_LEFT) and layers.is_layer_active(L_RIGHT));
+                    if (data.hold.custom) |kc| {
+                output_queue.tap_key(core.KeyCodeFire{ .tap_keycode = kc, .tap_modifiers = data.hold.hold_modifiers }) catch {};
+            }
+        
         },
         .OnHoldExitAfter => |_| {
             layers.set_layer_state(L_BOTH, layers.is_layer_active(L_LEFT) and layers.is_layer_active(L_RIGHT));
