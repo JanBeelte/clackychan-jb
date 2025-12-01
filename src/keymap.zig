@@ -42,15 +42,15 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // L_ARROWS - WIP (PLUS & MINUS up for debate)
     .{
-   T(us.LBRC),    T(us.RBRC),    SFT(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
+   GUI(us.LBRC),    T(us.RBRC),    SFT(us.LCBR),          T(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
                   T(us.EXLM),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM
     .{
-       T(us.ESC),  REDO,    SFT(us.PERC),  T(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
-       GUI(us.BACKSPACE),     UNDO,         T(_Gui(us.S)) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
+       GUI(us.ESC),  REDO,    SFT(us.PERC),  T(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
+       AF(us.BACKSPACE),     UNDO,         T(_Gui(us.S)) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
                T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
@@ -64,7 +64,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // BOTH - WIP (ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
     .{
-    T(us.ESC),   T(us.F7),   SFT(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
+    GUI(us.ESC),   T(us.F7),   SFT(us.F8),   T(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
     SCRNSHT, CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
