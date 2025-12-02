@@ -31,7 +31,7 @@ pub const sides = [key_count]core.Side{
               .X,       .X
 };
 
-pub const SCRNSHT = T(_GCS(us.N4));
+pub const SCRNSHT = _GCS(us.N4);
 
 pub const keymap = [_][key_count]core.KeyDef{
     .{
@@ -64,8 +64,8 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // BOTH - WIP (ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
     .{
-    GUI(us.ESC),   T(us.F7),   T(us.F8),   SFT(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), T(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
-    SCRNSHT, CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
+    GUI(us.ESC),   T(us.F7),   T(us.F8),   SFT(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), SFT(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
+    SFT(SCRNSHT), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
     },
