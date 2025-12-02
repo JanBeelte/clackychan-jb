@@ -156,7 +156,7 @@ fn C(key_press: core.KeyCodeFire, custom_hold: u8) core.KeyDef {
 
 pub const dimensions = core.KeymapDimensions{ .key_count = key_count, .layer_count = keymap.len };
 const PrintStats = core.KeyDef{ .tap_only = .{ .key_press = .{ .tap_keycode = us.KC_PRINT_STATS } } };
-const tapping_term = core.TimeSpan{ .ms = 250 };
+const tapping_term = core.TimeSpan{ .ms = 150 };
 const combo_timeout = core.TimeSpan{ .ms = 40 };
 
 pub const combos = [_]core.Combo2Def{
