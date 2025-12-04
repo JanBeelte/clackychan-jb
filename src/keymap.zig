@@ -44,13 +44,13 @@ pub const keymap = [_][key_count]core.KeyDef{
     .{
    GUI(us.LBRC),    T(us.RBRC),    T(us.LCBR),          SFT(us.RCBR), T(us.HASH),             T(us.AT),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
-                  T(us.EXLM),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
+                  T(us.TILD),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM - WIP (SCRNSHT for debate)
     .{
        GUI(us.ESC), T(SCRNSHT) ,    T(us.PERC),  SFT(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
-       AF(us.BACKSPACE),     UNDO,         REDO , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
+       AF(us.BACKSPACE), CTL(UNDO), ALT(REDO) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
                T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
@@ -89,8 +89,8 @@ pub const keymap = [_][key_count]core.KeyDef{
 const LEFT_THUMB = 1;
 const RIGHT_THUMB = 2;
 
-const UNDO = T(_Gui(us.Z));
-const REDO = T(.{ .tap_keycode = us.KC_Z, .tap_modifiers = .{ .left_shift = true, .left_gui = true } });
+const UNDO = _Gui(us.Z);
+const REDO : core.KeyCodeFire = .{ .tap_keycode = us.KC_Z, .tap_modifiers = .{ .left_shift = true, .left_gui = true } };
 
 fn _Ctl(fire: core.KeyCodeFire) core.KeyCodeFire {
     var copy = fire;
@@ -162,7 +162,7 @@ const combo_timeout = core.TimeSpan{ .ms = 40 };
 pub const combos = [_]core.Combo2Def{
     Combo_Tap(.{ 1, 2 }, L_BASE, de.SRPS),
     Combo_Tap_HoldMod(.{ 20, 21 }, L_BASE, us.Z, .{ .right_ctrl = true }),
-    
+
     // Dots for DE Umlaute:
     Combo_Tap(.{ 22, 23 }, L_BASE, _Alt(us.U)),
     Combo_Tap(.{ 24, 25 }, L_BASE, _Alt(us.U)),
