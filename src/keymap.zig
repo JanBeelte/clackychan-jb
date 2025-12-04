@@ -42,7 +42,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // L_ARROWS - WIP (PLUS & MINUS up for debate)
     .{
-   GUI(us.LBRC),    T(us.RBRC),    T(us.LCBR),          SFT(us.RCBR), T(us.AT),             T(us.HASH),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
+   GUI(us.LBRC),    T(us.RBRC),    T(us.LCBR),          SFT(us.RCBR), T(us.HASH),             T(us.AT),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
                   T(us.EXLM),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
                                         LT(L_LEFT, us.ENTER),                _______
