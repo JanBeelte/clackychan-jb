@@ -40,14 +40,14 @@ pub const keymap = [_][key_count]core.KeyDef{
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
-    // L_ARROWS - WIP (PLUS & TILD up for debate)
+    // L_ARROWS - WIP (SEMICOLON & PLUS & TILD up for debate)
     .{
    GUI(us.LBRC),    T(us.RBRC),    T(us.LCBR),          SFT(us.RCBR), T(us.HASH),             T(us.AT),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
                   T(us.TILD),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.GRAVE),
                                         LT(L_LEFT, us.ENTER),                _______
     },
-    // L_NUM - WIP (SCRNSHT for debate)
+    // L_NUM
     .{
        GUI(us.ESC), T(SCRNSHT) ,    T(us.PERC),  SFT(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
        AF(us.BACKSPACE), CTL(UNDO), ALT(REDO) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
@@ -62,10 +62,10 @@ pub const keymap = [_][key_count]core.KeyDef{
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
 
     },
-    // BOTH - WIP (SCRNSHT & ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
+    // BOTH - WIP (BACKSPACE & ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
     .{
     GUI(us.ESC),   T(us.F7),   T(us.F8),   SFT(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), SFT(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
-    SFT(SCRNSHT), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
+    AF(us.BACKSPACE), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
     },
