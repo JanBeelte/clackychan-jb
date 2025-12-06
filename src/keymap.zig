@@ -40,11 +40,11 @@ pub const keymap = [_][key_count]core.KeyDef{
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
     },
-    // L_ARROWS - WIP (PLUS & MINUS up for debate)
+    // L_ARROWS - WIP (PLUS & TILD up for debate)
     .{
    GUI(us.LBRC),    T(us.RBRC),    T(us.LCBR),          SFT(us.RCBR), T(us.HASH),             T(us.AT),  T(us.HOME),   AF(us.UP),    T(us.END),  T(us.PLUS),
     SFT(us.LABK), CTL(us.RABK), ALT(us.LPRN),   GUI(us.RPRN), T(us.SLASH),             T(us.PGUP), AF(us.LEFT), AF(us.DOWN), AF(us.RIGHT), SFT(us.PGDN),
-                  T(us.TILD),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.MINUS),
+                  T(us.TILD),   T(us.AMPR),  T(us.ASTER),    T(us.BACKSLASH),                T(us.DLR),  GUI(us.SEMICOLON), ALT(us.QUOT), CTL(us.GRAVE),
                                         LT(L_LEFT, us.ENTER),                _______
     },
     // L_NUM - WIP (SCRNSHT for debate)
@@ -162,7 +162,9 @@ const combo_timeout = core.TimeSpan{ .ms = 40 };
 pub const combos = [_]core.Combo2Def{
     // Combo_Tap(.{ 1, 2 }, L_BASE, de.SRPS),
     Combo_Tap(.{ 25, 26 }, L_BASE, us.COLON),
+    Combo_Tap(.{ 25, 26 }, L_ARROWS, us.COLON),
     Combo_Tap(.{ 26, 27 }, L_BASE, us.DQUO),
+    Combo_Tap(.{ 26, 27 }, L_ARROWS, us.DQUO),
     Combo_Tap_HoldMod(.{ 20, 21 }, L_BASE, us.Z, .{ .right_ctrl = true }),
 
     // Dots for DE Umlaute:
