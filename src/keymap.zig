@@ -160,7 +160,9 @@ const tapping_term = core.TimeSpan{ .ms = 200 };
 const combo_timeout = core.TimeSpan{ .ms = 40 };
 
 pub const combos = [_]core.Combo2Def{
-    Combo_Tap(.{ 1, 2 }, L_BASE, de.SRPS),
+    // Combo_Tap(.{ 1, 2 }, L_BASE, de.SRPS),
+    Combo_Tap(.{ 25, 26 }, L_BASE, us.COLON),
+    Combo_Tap(.{ 26, 27 }, L_BASE, us.DQUO),
     Combo_Tap_HoldMod(.{ 20, 21 }, L_BASE, us.Z, .{ .right_ctrl = true }),
 
     // Dots for DE Umlaute:
