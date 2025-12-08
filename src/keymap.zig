@@ -35,7 +35,7 @@ pub const SCRNSHT = _GCS(us.N4);
 
 pub const keymap = [_][key_count]core.KeyDef{
     .{
-         GuiH(us.Q,us.Q ),  GuiH(us.W, us.W), T(us.F),   SFT(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
+         T(us.Q),  T(us.W), T(us.F),   SFT(us.P), T(us.B),                  T(us.J),   T(us.L),  T(us.U),       T(us.Y), T(us.SEMICOLON),
          SFT(us.A), CTL(us.R), ALT(us.S),         GUI(us.T), GuiH(us.G, us.T),                  T(us.M), GUI(us.N),   ALT(us.E),     CTL(us.I),    SFT(us.O),
                     GuiH(us.X, us.X),   GuiH(us.C, us.C),         T(us.D), GuiH(us.V, us.V),                  T(us.K),  T(us.H), T(us.COMMA), LT(L_WIN, us.DOT),
                                              LT(L_LEFT, us.SPACE),                  LT(L_RIGHT, us.ENTER)
@@ -90,7 +90,7 @@ const LEFT_THUMB = 1;
 const RIGHT_THUMB = 2;
 
 const UNDO = _Gui(us.Z);
-const REDO : core.KeyCodeFire = .{ .tap_keycode = us.KC_Z, .tap_modifiers = .{ .left_shift = true, .left_gui = true } };
+const REDO: core.KeyCodeFire = .{ .tap_keycode = us.KC_Z, .tap_modifiers = .{ .left_shift = true, .left_gui = true } };
 
 fn _Ctl(fire: core.KeyCodeFire) core.KeyCodeFire {
     var copy = fire;
@@ -166,6 +166,7 @@ pub const combos = [_]core.Combo2Def{
     Combo_Tap(.{ 26, 27 }, L_BASE, us.DQUO),
     Combo_Tap(.{ 26, 27 }, L_ARROWS, us.DQUO),
     Combo_Tap_HoldMod(.{ 20, 21 }, L_BASE, us.Z, .{ .right_ctrl = true }),
+    Combo_Tap_HoldMod(.{ 1, 2 }, L_BASE, us.Z, .{ .right_ctrl = true }),
 
     // Dots for DE Umlaute:
     Combo_Tap(.{ 22, 23 }, L_BASE, _Alt(us.U)),
