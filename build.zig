@@ -35,5 +35,5 @@ pub fn build(b: *std.Build) void {
 
     const flash_dep = b.dependency("zig_flash", .{});
     const flash_exe = flash_dep.artifact("zig_flash");
-    _ = flash.addFlashStep(b, flash_exe, .{.input_name="clackychan-jb.uf2"});
+    _ = flash.addFlashStep(b, flash_exe, .{ .input_name = "clackychan-jb.uf2" });
 }
