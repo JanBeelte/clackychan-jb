@@ -187,9 +187,11 @@ pub const combos = [_]core.Combo2Def{
     // Combo_Tap(.{ 7, 8 }, L_BASE, de.UE),
 
     Combo_Tap(.{ 7, 8 }, L_ARROWS, us.QUES),
+    Combo_Tap(.{ 7, 8 }, L_NUM, us.QUES),
     Combo_Tap(.{ 7, 8 }, L_BOTH, us.QUES),
 
     Combo_Tap(.{ 1, 2 }, L_ARROWS, us.EXLM),
+    Combo_Tap(.{ 1, 2 }, L_NUM, us.EXLM),
     Combo_Tap(.{ 1, 2 }, L_BOTH, us.EXLM),
 
     // Combo_Tap_HoldMod(.{ 17, 18 }, L_BASE, us.MINS, .{ .left_ctrl = true, .left_alt = true }),
