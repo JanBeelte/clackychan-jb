@@ -5,10 +5,8 @@
     .minimum_zig_version = "0.15.2",
     .dependencies = .{
         .zigmkay = .{
-            .url = "git+https://github.com/StephanMoeller/zigmkay.git#16b04838571b95a4591ff0d5920bce50b1d489a2",
-            .hash = "zigmkay-0.0.0-5KTMxx3cAwBKIP1Jj4ZBw49RNm4fdchRzLVQKK2bIAXn",
-            // For development:
-            // .path = "../zigmkay",
+            .url = "git+https://github.com/StephanMoeller/zigmkay.git#46382925dc1ab79630622be0eb9cea24225b8df4",
+            .hash = "zigmkay-0.0.0-5KTMx2DXAwA2K6iB-5RAkWME1VubQ3021HoZ3aFpLL2u",
         },
         .microzig = .{
             .url = "https://github.com/ZigEmbeddedGroup/microzig/releases/download/0.15.0/microzig.tar.gz",

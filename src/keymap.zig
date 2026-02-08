@@ -7,7 +7,7 @@ const core = zmk.zigmkay.core;
 const NONE = core.KeyDef.none;
 const _______ = NONE;
 const us = zmk.keycodes.us;
-const de = zmk.keycodes.de;
+const ui = zmk.keycodes.us_intl;
 
 pub const key_count = 30;
 
@@ -51,7 +51,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     .{
        GUI(us.ESC), T(SCRNSHT) ,    T(us.PERC),  SFT(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
        AF(us.BACKSPACE), CTL(UNDO), ALT(REDO) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
-               T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(de.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
+               T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(ui.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
     // L_EMPTY
@@ -65,7 +65,7 @@ pub const keymap = [_][key_count]core.KeyDef{
     // BOTH - WIP (BACKSPACE & ESC & TAB & GRAVE & CART up for debate, do we want SCRNSHT without shift?)
     .{
     GUI(us.ESC),   T(us.F7),   T(us.F8),   SFT(us.F9), T(us.F10),            T(_Gui(us.GRAVE)), SFT(us.SPACE), T(us.SPACE), T(us.SPACE), T(us.TAB),
-    AF(us.BACKSPACE), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(de.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
+    AF(us.BACKSPACE), CTL(us.F4), ALT(us.F5), GUI(us.F6), T(us.F11),             T(ui.SRPS),  GUI(us.BS),  ALT(us.BS),  CTL(us.BS),   SFT(us.ESC),
                       T(us.F1),   T(us.F2),   T(us.F3), T(us.F12),            T(us.CART),   T(us.DEL),   T(us.DEL),   T(us.DEL),
                                                    _______,              _______
     },
