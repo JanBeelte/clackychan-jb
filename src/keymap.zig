@@ -49,8 +49,8 @@ pub const keymap = [_][key_count]core.KeyDef{
     },
     // L_NUM
     .{
-       GUI(us.ESC), T(SCRNSHT) ,    T(us.PERC),  SFT(us.CART), T(us.GRAVE),                  T(us.MINUS),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.PLUS),
-       AF(us.BACKSPACE), CTL(UNDO), ALT(REDO) , GUI(us.ENTER), T(us.TAB),                T(us.UNDERLINE), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.EQUAL),
+       GUI(us.ESC), T(SCRNSHT) ,    T(us.PERC),  SFT(us.CART), T(us.GRAVE),                  T(us.UNDERLINE),   T(us.N7),  T(us.N8),  T(us.N9),    T(us.EQUAL),
+       AF(us.BACKSPACE), CTL(UNDO), ALT(REDO) , GUI(us.ENTER), T(us.TAB),                T(us.MINUS), GUI(us.N4), ALT(us.N5),CTL(us.N6), SFT(us.PLUS),
                T(_Gui(us.X)), T(_Gui(us.C)),   T(us.DEL), T(_Gui(us.V)),              T(ui.EUR),   T(us.N1),  T(us.N2),  T(us.N3),
                                         _______,                                                       LT(L_RIGHT, us.N0)
     },
